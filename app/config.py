@@ -9,6 +9,9 @@ class Settings(BaseSettings):
     db_password: str = "postgres"
     server_port: int = 52243
 
+    redis_host: str = "localhost"
+    redis_port: int = 6379
+
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
 
 

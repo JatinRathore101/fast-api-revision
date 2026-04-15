@@ -88,7 +88,7 @@ logger.add(
 
 # Fields whose values must NEVER appear in plain text in logs.
 # Add new keys here whenever a new sensitive field is introduced.
-_SENSITIVE_KEYS = {"password", "auth", "consumer-key", "token", "secret", "authorization"}
+_SENSITIVE_KEYS = {"password", "auth", "consumer-key", "token", "secret", "authorization", "session_token"}
 
 
 def mask_sensitive(data: dict) -> dict:
