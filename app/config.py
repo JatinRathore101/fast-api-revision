@@ -12,6 +12,10 @@ class Settings(BaseSettings):
     redis_host: str = "localhost"
     redis_port: int = 6379
 
+    mongo_host: str = "localhost"
+    mongo_port: int = 27017
+    mongo_db_name: str = "companies_db"
+
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
 
 

@@ -38,6 +38,9 @@ from app.routers import user as user_router
 # Aggregated router that includes login and logout endpoints
 from app.routers import session as session_router
 
+# Aggregated router that includes company data endpoints
+from app.routers import company as company_router
+
 # Application-wide logger — import once here, Loguru handles everything globally
 from app.utils.logger import logger
 
@@ -63,6 +66,7 @@ async def lifespan(app: FastAPI):
     logger.info("Application starting up | User Management Service v1.0.0")
     logger.debug('Registered routers | {"prefix": "/users", "tags": ["Users"]}')
     logger.debug('Registered routers | {"prefix": "/session", "tags": ["Session"]}')
+    logger.debug('Registered routers | {"prefix": "/companies", "tags": ["Companies"]}')
     logger.debug('Registered middleware | {"middleware": "RequestLoggingMiddleware"}')
 
     yield  # ← Application is live and serving requests between here and shutdown
@@ -91,6 +95,9 @@ app.include_router(user_router.router, prefix="/users", tags=["Users"])
 
 # Session routes (login, logout) are grouped under /session.
 app.include_router(session_router.router, prefix="/session", tags=["Session"])
+
+# Company routes (companies list, etc.) are grouped under /companies.
+app.include_router(company_router.router, prefix="/companies", tags=["Companies"])
 
 
 # ─── Health Check Endpoint ───────────────────────────────────────────────────────
